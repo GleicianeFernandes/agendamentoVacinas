@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
-import { styles } from '../styles/home/stylesHome';
+import { styles } from './styles';
 
 export default function Home() {
   const router = useRouter();
