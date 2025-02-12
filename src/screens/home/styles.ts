@@ -21,15 +21,15 @@ export const styles = StyleSheet .create({
         
     },
     bnt: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#fff',
         padding: 15,
         width: 200,
-        borderRadius: 5,
+        borderRadius: 25,
         marginBottom: 10,
         
     },
     buttonText: {
-        color: '#fff',
+        color: '#007AFF',
         fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',
