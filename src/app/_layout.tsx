@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../Components/home/home';
+import Home from '../screens/home/home'
 // import Scheduling from '../Components/scheduling/scheduling';
 // import Search from '../Components/search/search';
 // import VaccineBooklet from '../Components/vaccineBooklet/vaccineBooklet';
