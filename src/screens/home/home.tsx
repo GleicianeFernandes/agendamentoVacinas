@@ -2,9 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { styles } from './styles';
+import { useNavigation } from 'expo-router';
 
 export default function Home() {
   const router = useRouter();
+  const navigation = useNavigation();
 
 
 return(
@@ -16,8 +18,17 @@ return(
         <TouchableOpacity style={styles.bnt}>
             <Text style={styles.buttonText}>Pesquisar</Text>
             </TouchableOpacity>
-        <TouchableOpacity style={styles.bnt}>
-            <Text style={styles.buttonText}>Login</Text>
+        <TouchableOpacity 
+        style={styles.bnt}
+        >
+        <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity 
+        style={styles.bnt}
+        onPress={()=> navigation.navigate('login')}
+        >
+        <Text style={styles.buttonText}>Login2</Text>
         </TouchableOpacity>
     </View>
 )
