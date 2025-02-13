@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Olá, agora você pode localizar as vacinas!</Text>
+      <Text style={styles.text}>Olá, Bem vindo ao sistema!</Text>
       <TouchableOpacity style={styles.button} onPress={() => router.push('../screens/search')}>
         <Text style={styles.buttonText}>Pesquisar Vacinas</Text>
       </TouchableOpacity>
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     padding: 32,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#ADD8E6',
   },
   text: {
     fontSize: 18,
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 20, // Espaçamento abaixo do texto
   },
   button: {
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     padding: 15,
     width: 200,
     borderRadius: 25,
