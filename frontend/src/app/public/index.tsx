@@ -1,15 +1,19 @@
+import * as WebBrowser from 'expo-web-browser';
+import * as Linking from 'expo-linking';
+
+import { useEffect, useState } from 'react';
+
 import { Button } from '../../Components/Button/button';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { router } from 'expo-router';
-import * as WebBrowser from 'expo-web-browser';
-import { useOAuth } from '@clerk/clerk-expo';
-import { useEffect, useState } from 'react';
-import * as Linking from 'expo-linking';
+
+import { useOAuth, useUser } from '@clerk/clerk-expo';
+
 
 WebBrowser.maybeCompleteAuthSession();
 
 export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
+  
   const googleAuth = useOAuth({ strategy: 'oauth_google' });
 
   async function signInWithGoogle() {
@@ -18,10 +22,19 @@ export default function SignIn() {
       const redirectUrl = Linking.createURL('/');
       const oAuthFlow = await googleAuth.startOAuthFlow({ redirectUrl });
 
+      const { user } = useUser();
+  
+      console.log('!@# oAuthFlow', oAuthFlow);
+  
       if (oAuthFlow.authSessionResult?.type === 'success') {
         if (oAuthFlow.setActive) {
           await oAuthFlow.setActive({ session: oAuthFlow.createdSessionId });
         }
+
+        console.log('!@# result', oAuthFlow.authSessionResult);
+  
+        // Aqui você pode salvar os dados do usuário no estado ou em um contexto global
+        // para usá-los em outras partes do aplicativo
       } else {
         setIsLoading(false);
       }
@@ -41,7 +54,7 @@ export default function SignIn() {
   return (
     <View style={styles.container}>
       <Image 
-        source={require('../../../assets/images/logo.png')} // Ajuste o caminho para sua logo
+        source={require('../../../assets/images/logo.png')} // Ajuste o caminho para sua lowgo
         style={styles.logo} 
       />
       <Text style={styles.title}>

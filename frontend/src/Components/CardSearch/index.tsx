@@ -1,29 +1,89 @@
-import { TouchableOpacityProps, Text, View } from "react-native";
-import  { styles } from "./styles";
+import {
+  TouchableOpacityProps,
+  Text,
+  View,
+  StyleSheet,
+  Touchable,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import React from "react";
-
+import VaccineIcon from "../../../assets/images/vaccine.png";
+import { useRouter } from "expo-router";
 
 interface CardSearchProps extends TouchableOpacityProps {
-    vaccineName: string;
-    hospitalName: string;
-    address: string;
-    distance: string;
-    openingHours: string;
-    location: string;
+  id: string;
+  vaccineName: string;
+  hospitalName: string;
 }
 
-export function CardSearch({
-    vaccineName,
-    hospitalName,
-    address,
-    distance,
-    openingHours,
-    location,
-    ...rest
-}:CardSearchProps){
-    return(
-        <View style={styles.container}>
+export function CardSearch({ id, vaccineName, hospitalName }: CardSearchProps) {
+  const router = useRouter();
 
-        </View>
-    )
+  return (
+    <View style={styles.container}>
+      <Image source={VaccineIcon} style={styles.icon} />
+      <Text style={styles.vaccine}>{vaccineName}</Text>
+      <Text style={styles.hospital}>{hospitalName}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          router.push({
+            pathname: "/vaccine/[id]",
+            params: { id },
+          })
+        }
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Agendar</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: 150,
+    height: 190,
+    flexDirection: "column",
+    alignItems: "center",
+    borderRadius: 16,
+    backgroundColor: "#ADD8E6",
+    gap: 10,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 20,
+    position: "relative",
+  },
+  icon: {
+    width: 50,
+    height: 50,
+    color: "#fff",
+    fontSize: 20,
+  },
+  vaccine: {
+    textAlign: "center",
+    color: "#05326E",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  hospital: {
+    textAlign: "center",
+    color: "#05326E",
+    fontSize: 10,
+  },
+  button: {
+    position: "absolute",
+    bottom: 0,
+    backgroundColor: "#3FABB7",
+    padding: 8,
+    width: "100%",
+    borderRadius: 25,
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});
