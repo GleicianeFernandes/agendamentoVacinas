@@ -26,6 +26,20 @@ export default class VaccineController {
         }
     }
 
+    static async getOneName(req : Request, res: Response) {
+        try {
+            const {nameVaccine} = req.params;
+            const vaccines = await Vaccine.findOne({ vaccineName: nameVaccine }).exec();
+            if (vaccines === null) {
+                return res.status(200).json([]);
+              }
+        
+              res.status(200).json([vaccines]);
+        } catch (err : any) {
+            return res.status(500).json({ message: err.message });
+        }
+    }
+
 
     static async createVaccine(req : Request, res: Response) {
         try {

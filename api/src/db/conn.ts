@@ -8,6 +8,6 @@ export default async ()=>{
 
         await mongoose.connect(connectionString)
     }catch(err){
-        return console.error()
+        return console.log(err)
     }
 }
