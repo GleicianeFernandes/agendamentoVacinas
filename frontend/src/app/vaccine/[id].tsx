@@ -20,6 +20,7 @@ import HourIcon from "../../../assets/images/hour.png";
 import FileIcon from "../../../assets/images/file.png";
 
 import { useUser } from "@clerk/clerk-expo";
+import { Footer } from "@/src/Components/Footer";
 
 import DropDownPicker from "react-native-dropdown-picker";
 import { api } from "@/src/services/api";
@@ -107,7 +108,7 @@ export default function VaccinePage() {
           <Image source={BackIcon} style={{ width: 25, height: 25 }} />
         </TouchableOpacity>
       </View>
-      <View style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <View style={{ display: "flex", flexDirection: "column", gap: 6, paddingHorizontal: 32 }}>
         <Text
           style={{
             fontSize: 20,
@@ -195,6 +196,7 @@ export default function VaccinePage() {
           </Text>
         </TouchableOpacity>
       </View>
+      <Footer type="buscar"/>
     </View>
   );
 }
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     height: "100%",
-    padding: 32,
+    paddingVertical: 32,
     alignItems: "center",
     backgroundColor: "white",
     position: "relative",
@@ -225,6 +227,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 10,
     marginTop: 20,
+    paddingHorizontal: 32
   },
   input: {
     display: "flex",

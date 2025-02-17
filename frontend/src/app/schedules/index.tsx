@@ -3,6 +3,7 @@ import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useUser } from '@clerk/clerk-expo'
 import { Text, View } from 'react-native'
 import { api } from '@/src/services/api'
+import { Footer } from "@/src/Components/Footer";
 
 import BackIcon from "../../../assets/images/back.png";
 import { CardSearch } from '@/src/Components/CardSearch';
@@ -59,6 +60,7 @@ export default function Schedules() {
           />
         )) : <Text>Nenhum agendamento encontrado</Text>}
       </View>
+      <Footer type="mySchedule"/>
     </View>
   )
 }
@@ -80,7 +82,7 @@ export const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 32,
+    paddingVertical: 32,
     alignItems: "center",
     backgroundColor: "white",
     position: "relative",
