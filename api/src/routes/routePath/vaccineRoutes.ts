@@ -5,7 +5,6 @@ const router = Router()
 
 router.get("/:id", VaccineController.getVaccine)
 router.get("/", VaccineController.getAllVaccine)
-router.get('/:nameVaccine', VaccineController.getOneName);
 router.post("/", VaccineController.createVaccine)
 
 export default router
