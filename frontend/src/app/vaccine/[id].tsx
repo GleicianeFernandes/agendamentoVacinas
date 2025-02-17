@@ -22,11 +22,18 @@ import FileIcon from "../../../assets/images/file.png";
 import { useUser } from "@clerk/clerk-expo";
 
 import DropDownPicker from "react-native-dropdown-picker";
+import { api } from "@/src/services/api";
 
 export default function VaccinePage() {
   const { id } = useLocalSearchParams();
   const { user } = useUser();
-  
+
+  useEffect(() => {
+    if (id){
+
+    }
+  },[id]);
+
   const router = useRouter();
   
   const [vaccine, setVaccine] = useState<IVaccine | null>(null);
@@ -45,13 +52,14 @@ export default function VaccinePage() {
 
   const getVaccine = async () => {
     try {
-      const findedVaccine = FakeVaccines.find((vaccine) => vaccine.id === id);
-      console.log("!@# vaccine", findedVaccine);
-      if (findedVaccine) {
-        setVaccine(findedVaccine);
-      }
-    } catch (error) {}
-  };
+      const { data } = await api.get(`/vaccine/${id}`);
+
+      setVaccine(data.vaccine);
+    } catch (error) {
+      console.error('Erro ao buscar vacina:', error);
+    }
+  }
+  
 
   useEffect(() => {
     if (id) {
@@ -70,13 +78,22 @@ export default function VaccinePage() {
     }
   };
 
-  const handleSubmit = () => {
-    console.log({
-      fullName,
-      cpf,
-      specialNeed,
-      proofFile,
-    });
+  const handleSubmit = async () => {
+    if (!fullName || !cpf || !specialNeed || !proofFile) {
+      return alert("Preencha todos os campos");
+    }
+
+    try{
+      await api.put(`/user`, {
+        email: user?.emailAddresses[0].emailAddress,
+        vaccineId: vaccine?._id,
+        name: fullName
+      })
+
+      router.push("/schedules");
+    }catch{
+      console.error('Erro ao agendar vacina');
+    }
   };
 
   return (

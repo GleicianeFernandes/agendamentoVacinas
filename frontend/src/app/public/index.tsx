@@ -24,15 +24,11 @@ export default function SignIn() {
 
       const { user } = useUser();
   
-      console.log('!@# oAuthFlow', oAuthFlow);
-  
       if (oAuthFlow.authSessionResult?.type === 'success') {
         if (oAuthFlow.setActive) {
           await oAuthFlow.setActive({ session: oAuthFlow.createdSessionId });
         }
 
-        console.log('!@# result', oAuthFlow.authSessionResult);
-  
         // Aqui você pode salvar os dados do usuário no estado ou em um contexto global
         // para usá-los em outras partes do aplicativo
       } else {

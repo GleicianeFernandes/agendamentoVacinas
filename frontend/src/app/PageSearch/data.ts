@@ -1,5 +1,5 @@
 export interface IVaccine {
-  id: string;
+  _id: string;
   vaccineName: string;
   hospitalName: string;
   address?: string;
@@ -10,18 +10,23 @@ export interface IVaccine {
 
 export const FakeVaccines = [
   {
-    id: "1",
+    _id: "1",
     vaccineName: "Febre amarela",
     hospitalName: "Hospital municipal de marabá",
-
+    address: "Marabá, Nova marabá, Fl. 18, Qd. 40, Lote 11",
+    day: '04/10/2025',
+    hour: '08:00 - 18:00 ',
   },
   {
-    id: "2",
+    _id: "2",
     vaccineName: "Febre amarela",
     hospitalName: "Hospital municipal de marabá",
+    address: "Marabá, Nova marabá, Fl. 18, Qd. 40, Lote 11",
+    day: '04/10/2025',
+    hour: '08:00 - 18:00 ',
   },
   {
-    id: "3",
+    _id: "3",
     vaccineName: "Febre amarela",
     hospitalName: "Hospital municipal de marabá",
     address: "Marabá, Nova marabá, Fl. 18, Qd. 40, Lote 11",

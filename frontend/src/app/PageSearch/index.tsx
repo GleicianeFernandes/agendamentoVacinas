@@ -1,16 +1,28 @@
+import { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-
 import { useRouter } from "expo-router";
-
 import { CardSearch } from "@/src/Components/CardSearch";
-
-import { FakeVaccines } from "./data";
 import { styles } from "./styles";
-
 import BackIcon from "../../../assets/images/back.png";
+import { api } from "@/src/services/api";
 
 export default function PageSearch() {
   const router = useRouter();
+  const [vaccines, setVaccines] = useState([]);
+
+  useEffect(() => {
+    getAllVaccines();
+  }, []);
+
+  const getAllVaccines = async () => {
+    try {
+      const { data } = await api.get("/vaccine");
+      setVaccines(data.vaccines);
+    } catch (error) {
+      console.error('Erro ao buscar vacinas:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -23,11 +35,11 @@ export default function PageSearch() {
         </TouchableOpacity>
       </View>
       <View style={styles.wrapperVaccines}>
-        {FakeVaccines.map((vaccine, index) => (
+        {vaccines.map((vaccine, index) => (
           <CardSearch
             key={index}
             hospitalName={vaccine.hospitalName}
-            id={vaccine.id}
+            id={vaccine._id}
             vaccineName={vaccine.vaccineName}
           />
         ))}

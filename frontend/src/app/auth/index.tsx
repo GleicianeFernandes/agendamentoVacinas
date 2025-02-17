@@ -9,8 +9,6 @@ export default function Home() {
 
   const { user } = useUser();
 
-  console.log('!@# user', user?.fullName);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Olá {user?.fullName}, Bem vindo ao sistema!</Text>
