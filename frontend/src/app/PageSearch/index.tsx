@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { CardSearch } from "@/src/Components/CardSearch";
+import { Footer } from "@/src/Components/Footer";
 import { styles } from "./styles";
-import BackIcon from "../../../assets/images/back.png";
+//import BackIcon from "../../../assets/images/back.png";
 import { api } from "@/src/services/api";
 
 export default function PageSearch() {
@@ -31,9 +32,10 @@ export default function PageSearch() {
           style={styles.backButton}
           onPress={() => router.push("/auth")}
         >
-          <Image source={BackIcon} style={{ width: 25, height: 25 }} />
+          {/*<Image source={BackIcon} style={{ width: 25, height: 25 }} />*/}
         </TouchableOpacity>
       </View>
+      <ScrollView style={{ flex: 1, paddingHorizontal: 32 }} contentContainerStyle={{ paddingBottom: 20 }}>
       <View style={styles.wrapperVaccines}>
         {vaccines.map((vaccine, index) => (
           <CardSearch
@@ -44,6 +46,8 @@ export default function PageSearch() {
           />
         ))}
       </View>
+      </ScrollView>
+      <Footer type="buscar"/>
     </View>
   );
 }

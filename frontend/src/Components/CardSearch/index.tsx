@@ -15,10 +15,32 @@ interface CardSearchProps extends TouchableOpacityProps {
   id: string;
   vaccineName: string;
   hospitalName: string;
+  type: "mySchedule"
 }
 
-export function CardSearch({ id, vaccineName, hospitalName }: CardSearchProps) {
+export function CardSearch({ id, vaccineName, hospitalName, type }: CardSearchProps) {
   const router = useRouter();
+
+  if (type === "mySchedule") {
+      return (
+        <View style={styles.container}>
+          <Image source={VaccineIcon} style={styles.icon} />
+          <Text style={styles.vaccine}>{vaccineName}</Text>
+          <Text style={styles.hospital}>{hospitalName}</Text>
+          <TouchableOpacity
+            onPress={() =>
+              router.push({
+                pathname: "/scheduleid/[id]",
+                params: { id },
+              })
+            }
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Detalhes</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
 
   return (
     <View style={styles.container}>

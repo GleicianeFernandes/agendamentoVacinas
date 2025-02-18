@@ -57,6 +57,7 @@ export default function Schedules() {
             hospitalName={schedule.hospitalName}
             id={schedule._id}
             vaccineName={schedule.vaccineName}
+            type='mySchedule'
           />
         )) : <Text>Nenhum agendamento encontrado</Text>}
       </View>
