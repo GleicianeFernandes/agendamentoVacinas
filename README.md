@@ -22,5 +22,7 @@ Deve-se trocar o IP local "172.20.10.10" no arquivo api.ts na seção do Fronten
 - Instale as dependências do frontend
 
 # Como rodar o projeto?
+
 1º - Rode o projeto backend: executando "npm start"
+
 2º - Rode o projeto frontend: executando "npx expo start"
