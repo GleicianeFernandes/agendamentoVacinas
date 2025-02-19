@@ -12,6 +12,7 @@ import {
   ScrollView,
   TouchableOpacityProps
 } from "react-native";
+import { Footer } from "@/src/Components/Footer";
 
 import { FakeVaccines, IVaccine } from "../PageSearch/data";
 
@@ -54,10 +55,7 @@ export default function ScheduleIDPage() {
             <Text style={styles.title2}>Protocolo de agendamento: {vaccine?._id}</Text>
             <Text style={styles.title2}>Vacina: {vaccine?.vaccineName}</Text>
             <Text style={styles.title2}>Paciente: {vaccine?.vaccineName}</Text>
-            <View>
-                <Text style={styles.title}>Agendamento: {vaccine?._id}</Text>
-                <Text style={styles.title2}>Protocolo de agendamento: {vaccine?._id}</Text>
-            </View>
+            <Footer type="mySchedule"/>
         </View>
     );
 }
