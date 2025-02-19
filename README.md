@@ -14,6 +14,7 @@ Deve-se trocar o IP local "172.20.10.10" no arquivo api.ts na seção do Fronten
 - Onde trocar o IP?
 -- Rota para encontrar o arquivo: frontend -> src -> services -> arquivo "api.ts"
 -- Substitua "172.20.10.10" pelo IP local do computador
+  
 ![image](https://github.com/user-attachments/assets/e48522f5-11de-414b-976c-ba2f91a5b054)
 
 2º ETAPA:
